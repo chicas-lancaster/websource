@@ -75,9 +75,13 @@ def googlecalendar(env, value, verbose=False):
     
 @environmentfilter
 def surnamesort(env, value, verbose=False):
-    """ sort on last name. Possibly sorting on second name is better 
-    when people present with three names but I'm not sure..."""
+    """ sort on last name unless there's a 
+    "namesort" attribute then sort on that
+    """
+
     def getsur(x):
+        if hasattr(x.meta,"namesort"):
+            return(x.meta.namesort)
         return x.meta.title.split()[-1]
     return sorted(value, key=getsur)
 
