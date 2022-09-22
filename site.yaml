@@ -97,6 +97,9 @@ grouper:
            - name: staff
              description: "Academic Staff"
              showGroupOnMain: True
+           - name: support
+             description: "Professional Services"
+             showGroupOnMain: True
            - name: pdra
              description: "Research Staff"
              showGroupOnMain: True
