@@ -2,7 +2,7 @@ from hyde.plugin import Plugin
 from hyde.ext.plugins.meta import Metadata, MetaPlugin
 from jinja2 import environmentfilter, Environment
 
-from datetime import datetime
+from datetime import datetime, date
 
 import sys
 import urllib
@@ -85,12 +85,18 @@ def surnamesort(env, value, verbose=False):
         return x.meta.title.split()[-1]
     return sorted(value, key=getsur)
 
+@environmentfilter
+def todayYMD(env, value, verbose=False):
+    return date.today()
+
+
 filters={
     'todateformat': todateformat,
     'calurl': datacalendar,
     'googleurl': googlecalendar,
     'vevent': tovevent,
-    'surnamesort': surnamesort
+    'surnamesort': surnamesort,
+    'todayYMD': todayYMD
 }
 
 class DepartmentPlugin(MetaPlugin):

@@ -5,9 +5,22 @@ description: List of projects
 ---
 {% block main %}
 <h2>Current Projects</h2>
+<h3>Last updated {{""|todayYMD()}}</h3>
+
+
 <div id="projects">
-{% for res in resource.node.walk_resources_sorted_by_titling() %}
-{% if res.meta.extends == "project.j2" and res.is_processable and not res.meta.finished %}
+  {% for res in resource.node.walk_resources_sorted_by_titling() %}
+
+  {% set expired = false %}
+  {% if res.meta.expiry %}
+  {% if ""|todayYMD() >= res.meta.expiry %}
+  {% set expired = true %}
+  {% endif %}
+  {% endif %}
+  {% if res.meta.finished %}
+  {% set expired = true %}
+  {% endif %}
+{% if res.meta.extends == "project.j2" and (res.is_processable and not expired) %}
 
 {% set tags=[] %}
 {% if res.meta.tags %}
@@ -76,8 +89,19 @@ description: List of projects
 <h4>Finished Projects</h4>
 <ul>
 {% for res in resource.node.walk_resources_sorted_by_titling() %}
-{% if res.meta.extends == "project.j2" and res.is_processable and res.meta.finished %}
-<li><a href="{{res.full_url}}">{{res.meta.title}}</a> : {{res.meta.description}}</li>
+
+  {% set expired = false %}
+  {% if res.meta.expiry %}
+{% if ""|todayYMD() >= res.meta.expiry %}
+  {% set expired = true %}
+  {% endif %}
+  {% endif %}
+{% if res.meta.finished %}
+  {% set expired = true %}
+  {% endif %}
+{% if res.meta.extends == "project.j2" and (res.is_processable and expired) %}
+<li>
+  <a href="{{res.full_url}}">{{res.meta.title}}</a> : {{res.meta.description}}</li>
 {% endif %}
 {% endfor %}
 </ul>
