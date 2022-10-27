@@ -2,6 +2,8 @@
 
 {% block sidebar %}
 <div class="newsbox">
+
+
 <h4>Latest News</h4>
 {% set latest = resource.node.walk_resources()|selectattr("is_processable")|selectattr("meta.release")|sort(reverse=True, attribute="meta.release")|first() %}
 {% if latest.meta.image %}
@@ -13,8 +15,11 @@
 {{latest.meta.description}}
 </p>
 </div>
+<a class="twitter-timeline" data-height="200" href="https://twitter.com/geospacedman?ref_src=twsrc%5Etfw">Tweets by geospacedman</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 <hr />
+
 <div id="nextevent"></div>
+
 {% endblock %}
 
 {% block extrahead %}
