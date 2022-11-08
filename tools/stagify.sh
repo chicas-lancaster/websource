@@ -32,7 +32,7 @@ z-index: 10;
 top: 0px;
 left: 0px;
 position: fixed;
-opacity: 0.75;
+opacity: 0.5;
 pointer-events: none;
 transform: translate(200px, 150px) rotate(-17deg);
 font-size: 200px;
