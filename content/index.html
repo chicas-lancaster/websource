@@ -11,26 +11,17 @@ description: Home page for CHICAS
 
 	<article class="ym-g50 ym-gl">
 	  <div class="ym-gbox-left">
-	    
-<h4>Latest News</h4>
-{% set latest = resource.node.walk_resources()|selectattr("is_processable")|selectattr("meta.release")|sort(reverse=True, attribute="meta.release")|first() %}
-{% if latest.meta.image %}
-<img class="newspic" src="{{media_url('/images/news/icon_'+latest.meta.image.name)}}">
-{% endif %}
-<!-- h6 class="newsdate">{{latest.meta.releasedate.strftime("%e %B, %Y")}}</h6-->
-<h5><a href="{{latest.url}}">{{latest.meta.title}}</a></h5>
-<p>
-{{latest.meta.description}}
-</p>
+           <h4><a class="plainhead" href="/study">MSc and PhD Studies</a></h4>
+<!-- PhD opps go here -->
+           <p>CHICAS supervises PhD students and runs the MSc in Health Data Science. See
+our <a href="/study">Study with CHICAS</a> pages for more details.
+	   </p>
 	  </div>
 	</article>
 	
 	<article class="ym-g50 ym-gr">
 	  <div class="ym-gbox">
-	    <h4><a href="/work" class="plainhead">Study and Work with CHICAS</a></h4>
-	    <p>CHICAS supervises PhD students and runs the MSc in Health Data Science. See
-our <a href="/study">Study with CHICAS</a> pages for more details.
-</p>
+	    <h4><a href="/work" class="plainhead">Work with CHICAS</a></h4>
 <p>We are open to collaborations with individuals and organisations. See our <a href="/partners.html">Partners</a>
 page for a list of past and current organisations we have worked with. Feel free to contact any of our
 staff with relevant interests to start a discussion.</p>
@@ -48,8 +39,15 @@ information</p-->
 
     <article class="ym-g33 ym-gr">
       <div class="ym-gbox-right secondary">
-	<img width="33%" style="float:left; margin-right: 1em" src="/media/images/whocc.svg" />
-	<p style="padding-left: 1em;font-weight: bold; color: #0093d5">WHO Collaborating Centre on Geostatistical Methods for Neglected Tropical Disease Research</p>
+       <h4><a href="/map.html" class="plainhead">Locations</a></h4>
+           <a href="/map.html">
+             <div id="maplink">
+               <img id="locationthumb" src="/media/images/graphics/location.png"/>
+               <div id="locationcaption">
+                 The <a href="/map.html">project map</a> shows our global connections.
+               </div>
+             </div>
+           </a>
       </div>
     </article>
   </div>
