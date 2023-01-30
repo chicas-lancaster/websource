@@ -1,0 +1,20 @@
+{% extends "flexigrid.j2" %}
+
+
+{% block header %}
+  <div class="ym-wrapper ym-clearfix">
+    <div class="ym-wbox" id="headerbox">
+      <a href="/whocc"><img id="whocclogo" alt="WHOCC" src="{{media_url('/images/logo/whocc.png')}}" /></a>
+    </div>
+  </div>
+{% endblock %}
+
+    {% block nav %}
+    {% from "macros.j2" import render_nav with context %}
+    {{ render_nav(whoccmenu, 'main_nav') }}
+    {% endblock %}
+
+
+{% block main %}
+
+{% endblock %}

@@ -34,7 +34,7 @@
   <li><a class="ym-skip" href="#nav">Skip to navigation (Press Enter)</a></li>
   <li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
 </ul>
-
+{% block header %}
 <header>
   <div class="ym-wrapper ym-clearfix">
     <div class="ym-wbox" id="headerbox">
@@ -46,6 +46,8 @@
     </div>
   </div>
 </header>
+{% endblock %}
+{% block navigation %}
 <nav id="nav">
   <div class="ym-wrapper">
     <div class="ym-hlist">
@@ -59,6 +61,7 @@
     </div>
   </div>
 </nav>
+{% endblock %}
 <main>
   <div class="ym-wrapper">
     <div class="ym-wbox">
