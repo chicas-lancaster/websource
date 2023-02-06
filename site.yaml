@@ -63,17 +63,12 @@ context:
                 url: events
         whoccmenu:
             -
-                name: Home
-                description: Home Page
+                name: CHICAS Home
+                description: Chicas Home Page
                 css_class: home
                 type: page
                 url: index.html
-            -
-                name: About Us
-                description: CHICAS Information
-                css_class: home
-                type: page
-                url: about.html
+
 meta:
     nodemeta: meta.yaml
     created: !!timestamp 2010-01-01 00:00:00
