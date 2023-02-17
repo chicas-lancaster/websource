@@ -1,0 +1,6 @@
+
+for f in *.pdf *.ppt *.pptx; do
+echo $f
+convert -geometry 1200x -background white -alpha remove "$f" "${f%.*}.webp"
+done
+

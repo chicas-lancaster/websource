@@ -1,0 +1,43 @@
+---
+extends: flexigrid.j2
+title: Research Posters
+description: Chicas Research Posters
+---
+
+{% block main %}
+<h1>Research Posters</h1>
+
+{% for posters in resource.meta.posters|sort(attribute='title')|batch(2,False) %}
+<div class="ym-grid linearize-level-2">
+ {% for poster in posters %}
+   <div class="ym-g50 ym-gl">
+     <div class="poster ym-clearfix">
+      <div class="ym-grid">
+	{% if poster %}
+	{% set stem = poster.file | replace('.pdf','') | replace('.pptx','') | replace('.ppt','') %}
+
+	<div class="ym-g25 ym-gl">
+        <a href="/research_posters/{{poster.file}}"><img class="bordered" src="/research_posters/{{stem}}.webp" alt="{{poster.title}}"/></a>
+      </div>
+      <div class="ym-g75 ym-gl">
+        <p><a href="/research_posters/{{poster.file}}">{{poster.title}}</a> : {{poster.authors}}</p>
+      </div>
+      {% endif %}
+      </div>
+     </div>
+   </div>
+{% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}
+    
+{% block sidebar %}
+<p>
+This collection of research posters showcases our work as displayed
+at conferences and meetings.
+</p>
+<p>
+Each image links to PDF or PowerPoint versions for reading.
+</p>
+{% endblock %}
