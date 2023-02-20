@@ -12,8 +12,20 @@ description: Chicas Research Posters
 <style>
 .swiper {
   width: 600px;
-  height: 300px;
+  height: 400px;
 }
+.postercaption {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(200,200,200,0.8);
+}
+
+.posterimage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 </style>
 {% endblock %}
 
@@ -25,8 +37,8 @@ description: Chicas Research Posters
   {% for poster in  resource.meta.posters|sort(attribute='title') %}
 {% set stem = poster.file | replace('.pdf','') | replace('.pptx','') | replace('.ppt','') %}
   <div class="swiper-slide">
-      <a href="/research_posters/{{poster.file}}"><img width="300px" class="bordered" src="/research_posters/{{stem}}.webp" alt="{{poster.title}}"/></a>
-      <p><a href="/research_posters/{{poster.file}}">{{poster.title}}</a> : {{poster.authors}}</p>
+      <a href="/research_posters/{{poster.file}}"><img height="100%" class="bordered posterimage" src="/research_posters/{{stem}}.webp" alt="{{poster.title}}" title="{{poster.title}}"/></a>
+      <p class="postercaption"><a href="/research_posters/{{poster.file}}">{{poster.title}}</a> : {{poster.authors}}</p>
   </div>
 {% endfor %}
 </div>
@@ -59,9 +71,10 @@ Each image links to PDF or PowerPoint versions for reading.
 <script>
 const swiper = new Swiper('.swiper', {
   // Optional parameters
-  direction: 'vertical',
+  direction: 'horizontal',
   loop: true,
 
+    effect: 'coverflow',
   // If we need pagination
   pagination: {
     el: '.swiper-pagination',
