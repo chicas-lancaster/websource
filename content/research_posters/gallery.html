@@ -17,7 +17,9 @@ description: Chicas Research Posters
 .postercaption {
     position: absolute;
     bottom: 0;
-    background-color: rgba(200,200,200,0.8);
+    background-color: rgba(255,255,255,0.9);
+    padding: 0.5em;
+    border: 1px solid #b5121b;
 }
 
 .posterimage {
@@ -52,8 +54,7 @@ description: Chicas Research Posters
 {% endblock %}
     
 {% block sidebar %}
-<h1>Research Posters</h1>
-
+<h2>Research Posters</h2>
 
 <p>
 This collection of research posters showcases our work as displayed
@@ -62,6 +63,14 @@ at conferences and meetings.
 <p>
 Each image links to PDF or PowerPoint versions for reading.
 </p>
+<ul>
+{% for poster in  resource.meta.posters|sort(attribute='title') %}
+{% set stem = poster.file | replace('.pdf','') | replace('.pptx','') | replace('.ppt','') %}
+<li>
+      <p><a href="/research_posters/{{poster.file}}">{{poster.title}}</a> : {{poster.authors}}</p>
+</li>
+{% endfor %}
+</ul>
 
 {% endblock %}
 
@@ -69,28 +78,30 @@ Each image links to PDF or PowerPoint versions for reading.
 {% block footscripts %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
-
-    effect: 'coverflow',
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
-});
+  const swiper = new Swiper('.swiper', {
+      
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      mousewheel: true,
+      effect: 'cube',
+    // If we need pagination
+    pagination: {
+	el: '.swiper-pagination',
+    },
+    
+    // Navigation arrows
+    navigation: {
+	nextEl: '.swiper-button-next',
+	prevEl: '.swiper-button-prev',
+    },
+    
+    // And if we need scrollbar
+    scrollbar: {
+	el: '.swiper-scrollbar',
+    },
+}
+			 );
 
 </script>
 {% endblock %}
