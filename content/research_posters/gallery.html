@@ -54,7 +54,7 @@ description: Chicas Research Posters
 <div class="swiper-wrapper">
   {% for poster in  resource.meta.posters|sort(attribute='title') %}
 {% set stem = poster.file | replace('.pdf','') | replace('.pptx','') | replace('.ppt','') %}
-  <div class="swiper-slide" data-hash="slide{{loop.index}}">
+  <div class="swiper-slide" data-hash="{{poster.title | urlencode}}">
       <a href="/research_posters/{{poster.file}}"><img class="bordered posterimage" src="/research_posters/{{stem}}.webp" alt="{{poster.title}}" title="{{poster.title}}"/></a>
       <p class="postercaption"><a href="/research_posters/{{poster.file}}">{{poster.title}}</a> : {{poster.authors}}</p>
   </div>
@@ -75,8 +75,8 @@ description: Chicas Research Posters
 <p>
 <div class="posterlist">
 <ul>
-{% for poster in  resource.meta.posters|sort(attribute='title') %}
-<li><a class="slidelink" href="#slide{{loop.index}}">{{poster.title}} : {{poster.authors}}</a></li>
+  {% for poster in  resource.meta.posters|sort(attribute='title') %}
+<li><a class="slidelink" href="#{{poster.title|urlencode}}">{{poster.title}} : {{poster.authors}}</a></li>
 {% endfor %}
 </ul>
 </div>
