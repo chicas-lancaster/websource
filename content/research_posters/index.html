@@ -14,13 +14,12 @@ description: Chicas Research Posters
      <div class="poster ym-clearfix">
       <div class="ym-grid">
 	{% if poster %}
-	{% set stem = poster.file | replace('.pdf','') | replace('.pptx','') | replace('.ppt','') %}
 
 	<div class="ym-g25 ym-gl">
-        <a href="/research_posters/{{poster.file}}"><img class="bordered" src="/research_posters/{{stem}}.webp" alt="{{poster.title}}"/></a>
+        <a href="/research_posters/{{poster.file}}{{poster.extension}}"><img class="bordered" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}"/></a>
       </div>
       <div class="ym-g75 ym-gl">
-        <p><a href="/research_posters/{{poster.file}}">{{poster.title}}</a> : {{poster.authors}}</p>
+        <p><a href="/research_posters/{{poster.file}}{{poster.extension}}">{{poster.title}}</a> : {{poster.authors}}</p>
       </div>
       {% endif %}
       </div>
