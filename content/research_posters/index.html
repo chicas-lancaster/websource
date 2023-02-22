@@ -20,10 +20,10 @@ description: Chicas Research Posters
 	{% if poster %}
 
 	<div class="ym-g25 ym-gl">
-        <a href="/research_posters/{{poster.file}}.html"><img class="bordered" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}"/></a>
+        <a href="/research_posters/{{poster.file}}.html" title="Click to zoom"><img class="bordered" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}"/></a>
       </div>
       <div class="ym-g75 ym-gl">
-        <p><a href="/research_posters/{{poster.file}}.html">{{poster.title}}</a> : {{poster.authors}}</p>
+        <p><a title="click to zoom" href="/research_posters/{{poster.file}}.html">{{poster.title}}</a> : {{poster.authors}}</p>
       </div>
       {% endif %}
       </div>
@@ -41,6 +41,6 @@ This collection of research posters showcases our work as displayed
 at conferences and meetings.
 </p>
 <p>
-Each image links to PDF or PowerPoint versions for reading.
+Click poster or description for zoomable version and link to PDF or PPT source.
 </p>
 {% endblock %}

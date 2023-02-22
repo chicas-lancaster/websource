@@ -75,9 +75,11 @@ description: Chicas Research Posters
 <h2>Research Posters</h2>
 
 <p>
-<div class="posterlist">
+  <div class="posterlist">
+    {% set all = resource.node.resources | selectattr("meta.authors") %}
 <ul>
-  {% for poster in  resource.meta.posters|sort(attribute='title') %}
+  {% for mposter in  all |sort(attribute='meta.title') %}
+  {% set poster=mposter.meta %}
 <li><a class="slidelink" href="#{{poster.title|urlencode}}">{{poster.title}} : {{poster.authors}}</a></li>
 {% endfor %}
 </ul>
