@@ -1,0 +1,39 @@
+{% extends "flexigrid.j2" %}
+
+{% block main %}
+
+<div id="seadragon-viewer" style="width:100%; height:600px;"></div>
+<script src="//openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+
+
+<script>
+  // If you like my work, please consider supporting it at https://www.patreon.com/iangilman
+
+var viewer = OpenSeadragon({
+    id: "seadragon-viewer",
+    springStiffness: 100,
+    showNavigator:  true,
+    navigatorPosition:   "TOP_RIGHT",
+    prefixUrl: "//openseadragon.github.io/openseadragon/images/",
+    tileSources:
+	{type: "image", url:"{{resource.meta.file}}.webp"},
+
+});
+</script>
+
+
+{% endblock %}
+
+{% block sidebar %}
+
+<h3>{{resource.meta.title}}</h3>
+
+<p>
+{{resource.meta.authors}}
+</p>
+<p>
+Download as <a href="{{resource.meta.file}}{{resource.meta.extension}}">{{resource.meta.extension}}</a>
+</p>
+
+
+{% endblock %}

@@ -50,12 +50,15 @@ description: Chicas Research Posters
 
 {% block main %}
 
+{% set all = resource.node.resources | selectattr("meta.authors") %}
+
 <div class="swiper">
 <div class="swiper-wrapper">
-  {% for poster in  resource.meta.posters|sort(attribute='title') %}
+  {% for mposter in  all |sort(attribute='meta.title') %}
+  {% set poster=mposter.meta %}
   <div class="swiper-slide" data-hash="{{poster.title | urlencode}}">
-      <a href="/research_posters/{{poster.file}}{{poster.extension}}"><img class="bordered posterimage" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}" title="{{poster.title}}"/></a>
-      <p class="postercaption"><a href="/research_posters/{{poster.file}}{{poster.extension}}">{{poster.title}}</a> : {{poster.authors}}</p>
+      <a href="/research_posters/{{poster.file}}.html"><img class="bordered posterimage" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}" title="{{poster.title}}"/></a>
+      <p class="postercaption"><a href="/research_posters/{{poster.file}}.html">{{poster.title}}</a> : {{poster.authors}}</p>
   </div>
 {% endfor %}
 </div>

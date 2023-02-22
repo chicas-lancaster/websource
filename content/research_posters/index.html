@@ -5,21 +5,25 @@ description: Chicas Research Posters
 ---
 
 {% block main %}
-<h1>Research Posters</h1>
 
-{% for posters in resource.meta.posters|sort(attribute='title')|batch(2,False) %}
+{% set all = resource.node.resources | selectattr("meta.authors") %}
+
+<h2>Research Posters</h2>
+
+{% for posters in all | sort(attribute="meta.title") | batch(2,False) %}
 <div class="ym-grid linearize-level-2">
- {% for poster in posters %}
+  {% for rposter in posters %}
+  {% set poster = rposter.meta %}
    <div class="ym-g50 ym-gl">
      <div class="poster ym-clearfix">
       <div class="ym-grid">
 	{% if poster %}
 
 	<div class="ym-g25 ym-gl">
-        <a href="/research_posters/{{poster.file}}{{poster.extension}}"><img class="bordered" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}"/></a>
+        <a href="/research_posters/{{poster.file}}.html"><img class="bordered" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}"/></a>
       </div>
       <div class="ym-g75 ym-gl">
-        <p><a href="/research_posters/{{poster.file}}{{poster.extension}}">{{poster.title}}</a> : {{poster.authors}}</p>
+        <p><a href="/research_posters/{{poster.file}}.html">{{poster.title}}</a> : {{poster.authors}}</p>
       </div>
       {% endif %}
       </div>
