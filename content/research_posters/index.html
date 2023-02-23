@@ -1,5 +1,5 @@
 ---
-extends: flexigrid.j2
+extends: flexigridisotope.j2
 title: Research Posters
 description: Chicas Research Posters
 ---
@@ -10,28 +10,29 @@ description: Chicas Research Posters
 
 <h2>Research Posters</h2>
 
-{% for posters in all | sort(attribute="meta.title") | batch(2,False) %}
-<div class="ym-grid linearize-level-2">
-  {% for rposter in posters %}
-  {% set poster = rposter.meta %}
-   <div class="ym-g50 ym-gl">
-     <div class="poster ym-clearfix">
-      <div class="ym-grid">
-	{% if poster %}
+<div id="projects">
+  {% for posterm in all|sort(attribute="meta.title") %}
+  {% set poster = posterm.meta %}
 
-	<div class="ym-g25 ym-gl">
-        <a href="/research_posters/{{poster.file}}.html" title="Click to zoom"><img class="bordered" src="/research_posters/{{poster.file}}.webp" alt="{{poster.title}}"/></a>
-      </div>
-      <div class="ym-g75 ym-gl">
-        <p><a title="click to zoom" href="/research_posters/{{poster.file}}.html">{{poster.title}}</a> : {{poster.authors}}</p>
-      </div>
-      {% endif %}
-      </div>
-     </div>
-   </div>
+
+
+<div class="projectbox">
+<a href="/research_posters/{{poster.file}}.html">
+<div class="project">
+
+<div class="title">{{poster.authors}}</div>
+<img  class="" width="40%" src="{{poster.file}}.webp">
+<div class="description">
+<p>{{poster.title}}</p>
+</div>
+<div style="clear: both;"></div>
+</div>
+</a>
+</div>
+
 {% endfor %}
 </div>
-{% endfor %}
+
 
 {% endblock %}
     
