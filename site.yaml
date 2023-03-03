@@ -47,8 +47,8 @@ context:
                 name: Research Themes
                 description: Our Research Theme Details
                 css_class: research
-                type: page
-                url: themes.html
+                type: node
+                url: themes
             -
                 name: News
                 description: News Items

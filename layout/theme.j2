@@ -1,18 +1,14 @@
 {% extends "flexigrid.j2" %}
 
+
+
 {% block main %}
-<!-- project.j2 -->
-<h2>{{ resource.meta.title }}</h2>
-{% if resource.meta.image %}
-<div class="pagepic">
-<a href="{{media_url('/images/content/box_'+resource.meta.image.name)}}" rel="lightbox" title="{{resource.meta.image.caption}}">
-<img src="{{media_url('/images/content/page_'+resource.meta.image.name)}}">
-<br/>{{resource.meta.image.caption}}
-</a>
-</div>
-{% endif %}
-{% block project %}
+<!--layout theme.j2 -->
+<h2>Research Theme : {{resource.meta.title}}</h2>
+
+{% block theme %}
 {% endblock %}
+
 {% endblock %}
 
 

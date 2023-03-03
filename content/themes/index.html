@@ -5,7 +5,15 @@ description: The research work we do.
 ---
 {% block main %}
 
+{% for res in resource.node.walk_resources() %}
+{% if res.meta.extends == "theme.j2" %}
+<h2><a href="{{res.full_url}}">{{res.meta.title}}</a></h2>
+<p>
+  {{res.meta.description}}
+</p>
 
+{% endif %}
+{% endfor %}
 
 
 <div class="pagepic">
