@@ -1,7 +1,6 @@
 {% extends "flexigrid.j2" %}
 
 
-
 {% block main %}
 <!--layout theme.j2 -->
 
@@ -14,11 +13,12 @@
 </a>
 </div>
 {% endif %}
+{% mark themetext %}
 {% block theme %}
 {% endblock %}
+{% endmark %}
 
 {% endblock %}
-
 
 
 {% block extrahead %}

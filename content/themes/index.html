@@ -5,14 +5,53 @@ description: The research work we do.
 ---
 {% block main %}
 
+<style>
+  .themebox {
+      border: 3px solid #b5121b;
+      border-bottom-right-radius: 4em;
+      margin: 2em;
+      padding: 1em;
+  }
+  p.description { font-style: italic}
+</style>
+
+
 {% for res in resource.node.walk_resources() %}
-{% if res.meta.extends == "theme.j2" %}
+{% if res.meta.extends == "theme.j2" and res.is_processable %}
+<div class="themebox">
 <h2><a href="{{res.full_url}}">{{res.meta.title}}</a></h2>
-<p>
+  {% if res.meta.image %}
+<div class="pagepic">
+<img src="{{media_url('/images/content/themes/page_'+res.meta.image.name)}}">
+</div>
+  {% endif %}
+<p class="description">
   {{res.meta.description}}
 </p>
-
+<p>
+{% refer to res.relative_path as theme %}
+{{theme.themetext}}
+</p>
+</div>
 {% endif %}
 {% endfor %}
 
+{% endblock %}
+
+{% block sidebar %}
+<h2>Research Themes</h2>
+<p>
+  Our research themes highlight our strengths and
+  serve to organise our research priorities.
+</p>
+
+{% endblock %}
+
+
+{% block extrahead %}
+ <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/media/js/libs/slimbox2.js"></script>
+<link rel="stylesheet" href="/media/css/slimbox/slimbox2.css" type="text/css" media="screen" />
 {% endblock %}
