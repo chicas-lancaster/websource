@@ -1,72 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8"/>
-	<title>Lancaster Medical School - CHICAS - {% block title %}{{resource.meta.title}}{% endblock %}</title>
+{% extends "flexipage.j2" %}
 
-	<!-- Mobile viewport optimisation -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block sections %}
 
-	<!-- (en) Add your meta data here -->
-	<!-- (de) Fuegen Sie hier ihre Meta-Daten ein -->
-
-	<meta name="description" content="{{resource.meta.description|e}}"/>
-	{% if resource.meta.keywords %}
-	<meta name="keywords" content="{{ resource.meta.keywords|join(", ")|e}}" />
-	{% endif %}
-	
-	<link href="{{media_url('/css/flexible-grids.css')}}" rel="stylesheet" type="text/css"/>
-	<!--[if lte IE 7]>
-	<link href="{{media_url('/css/yaml/core/iehacks.css')}}" rel="stylesheet" type="text/css" />
-	<![endif]-->
-{% block extrahead %}
-{% endblock %}
-	<!--[if lt IE 9]>
-	<script src="../lib/html5shiv/html5shiv.js"></script>
-	<![endif]-->
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="RSS"
-      href="//chicas.lancaster-university.uk/news/news.rss">
-</head>
-<body>
-<ul class="ym-skiplinks">
-  <li><a class="ym-skip" href="#nav">Skip to navigation (Press Enter)</a></li>
-  <li><a class="ym-skip" href="#main">Skip to main content (Press Enter)</a></li>
-</ul>
-{% block header %}
-<header>
-  <div class="ym-wrapper ym-clearfix">
-    <div class="ym-wbox" id="headerbox">
-      <a href="http://www.lancaster.ac.uk/shm/divisions/med/"><img height="100px" id="lulogo" alt="Health and Medicine, Lancaster University" src="{{media_url('/images/logo/lulogo.svg')}}" /></a>
-      <a href="/">
-	<img alt="CHICAS" height="120px" id="clogo" src="{{media_url('/images/logo/clogo.svg')}}" title="Centre for Health Informatics, Computing, and Statistics" style="float:right"/> 
-      </a>
-
-    </div>
-  </div>
-</header>
-{% endblock %}
-{% block navigation %}
-<nav id="nav">
-  <div class="ym-wrapper">
-    <div class="ym-hlist">
-      {% block nav %}
-      {% from "macros.j2" import render_nav with context %}
-      {{ render_nav(menu, 'main_nav') }}
-      {% endblock %}
-{% block search %}
-{% include "search.j2" %}
-{% endblock %}
-    </div>
-  </div>
-</nav>
-{% endblock %}
-<main>
-  <div class="ym-wrapper">
-    <div class="ym-wbox">
-      {% block abovecontent %}
-      {% endblock %}
 <section class="ym-grid linearize-level-1">
   <article class="ym-g66 ym-gl content">
     <div class="ym-gbox-left ym-clearfix">
@@ -116,27 +51,5 @@
     </div>
   </aside>
 </section>
-{% block belowcontent %}
-{% endblock %}
-    </div>
-  </div>
-</main>
-<footer>
-  <div class="ym-wrapper">
-    <div class="ym-wbox">
-      <p>Centre for Health Informatics, Computing, and Statistics. © Lancaster University 2017 &ndash; Layout based on <a href="http://www.yaml.de">YAML</a> &ndash;  <a href="/news/news.rss" title="News Feed"><img src="/media/images/graphics/rss_icon_glass_red12.PNG"> news feed</a></p>
-    </div>
-  </div>
-</footer>
-
-<!-- full skip link functionality in webkit browsers -->
-<script src="{{media_url('/css/yaml/core/js/yaml-focusfix.js')}}"></script>
-{% block footscripts %}
 {% endblock %}
 
-{% block analytics %}
-{% include "analytics.j2" %}
-{% endblock analytics %}
-
-</body>
-</html>

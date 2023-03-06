@@ -72,6 +72,7 @@ label span.tag:hover {
 }
 
 .pagepic img {
+    width: 100%;
     border: 1px solid #CCCCCC;
     vertical-align:middle;
     margin-bottom: 3px; 
@@ -288,4 +289,24 @@ dl.personitems dt::after {
 dl.personitems dd {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
+}
+
+div.personbox {
+    display: inline-block;
+}
+
+div.profilepic {
+    margin: 1em;
+}
+
+div.profilepic img {
+    border-radius: 25%;
+}
+
+div.profilename {
+    text-align: center;
+}
+
+div.peoplelist {
+    margin-bottom: 2em;
 }

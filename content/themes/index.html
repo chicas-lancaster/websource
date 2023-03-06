@@ -1,5 +1,5 @@
 ---
-extends: flexigrid.j2
+extends: flexiwide.j2
 title: Research Themes
 description: The research work we do.
 ---
@@ -7,24 +7,26 @@ description: The research work we do.
 
 <style>
   .themebox {
-      border: 3px solid #b5121b;
+      border: 1px solid #b5121b;
       border-bottom-right-radius: 4em;
       margin: 2em;
       padding: 1em;
   }
   p.description { font-style: italic}
+  div.themepic {width: 203px}
 </style>
 
 
 {% for res in resource.node.walk_resources() %}
 {% if res.meta.extends == "theme.j2" and res.is_processable %}
 <div class="themebox">
-<h2><a href="{{res.full_url}}">{{res.meta.title}}</a></h2>
   {% if res.meta.image %}
-<div class="pagepic">
+<div class="pagepic themepic">
 <img src="{{media_url('/images/content/themes/page_'+res.meta.image.name)}}">
 </div>
   {% endif %}
+
+  <h2><a href="{{res.full_url}}">{{res.meta.title}}</a></h2>
 <p class="description">
   {{res.meta.description}}
 </p>
@@ -35,15 +37,6 @@ description: The research work we do.
 </div>
 {% endif %}
 {% endfor %}
-
-{% endblock %}
-
-{% block sidebar %}
-<h2>Research Themes</h2>
-<p>
-  Our research themes highlight our strengths and
-  serve to organise our research priorities.
-</p>
 
 {% endblock %}
 

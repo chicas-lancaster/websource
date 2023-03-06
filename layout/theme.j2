@@ -1,4 +1,4 @@
-{% extends "flexigrid.j2" %}
+{% extends "flexiwide.j2" %}
 
 
 {% block main %}
@@ -17,6 +17,30 @@
 {% block theme %}
 {% endblock %}
 {% endmark %}
+
+
+{% if resource.meta.people %}
+<h3>People</h3>
+<div class="peoplelist">
+{% set peoplenode = resource.node.root.node_from_relative_path("people/") %}
+{% from "macros.j2" import personbox with context %}
+{% for person in resource.meta.people %}
+{% set p = peoplenode.get_resource(person + ".html") %}
+{{personbox(p)}}
+{% endfor %}
+</div>
+{% endif %}
+<div style="clear: both;"></div>
+
+ {% if resource.meta.projects %}
+ {% from "macros.j2" import projectbox with context %}
+      <h3>Projects</h3>
+      {% set projectnode = resource.node.root.node_from_relative_path("projects/") %}
+      	{% for project in resource.meta.projects  %}
+	{% set p = projectnode.get_resource(project + ".html") %}
+	{{ projectbox(p) }}
+	{% endfor %}      
+      {% endif %}	
 
 {% endblock %}
 
