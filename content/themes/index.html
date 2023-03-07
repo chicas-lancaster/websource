@@ -12,35 +12,48 @@ description: The research work we do.
       margin: 2em;
       padding: 1em;
   }
-  p.description { font-style: italic}
+  p.description { font-style: italic; color: black}
   div.themepic {width: 203px}
 </style>
 
 <h2>CHICAS Research Themes</h2>
-<p>
-Text here.  
+<p><!-- ChatGPT -->
+  As a health research group, our mission is to understand, prevent,
+  and treat different health conditions. We focus on a range of
+  research themes, including epidemiology, health services research,
+  infectious disease modeling, and population health data. By studying
+  the distribution and determinants of disease in populations,
+  improving the delivery and accessibility of healthcare services,
+  simulating the spread and impact of infectious diseases, and
+  analyzing information about the health and wellbeing of entire
+  populations, we aim to make significant contributions to the field
+  of public health. Through our research, we strive to identify
+  patterns, disparities, and trends in health, and inform the
+  development of targeted interventions to improve health outcomes for
+  all.
 </p>
+
+<div class="themes" style="display: flex">
 
 {% for res in resource.node.walk_resources() %}
 {% if res.meta.extends == "theme.j2" and res.is_processable %}
 <div class="themebox">
-  {% if res.meta.image %}
-<div class="pagepic themepic">
-<img src="{{media_url('/images/content/themes/page_'+res.meta.image.name)}}">
+  <a href="{{res.full_url}}">
+  {% if res.meta.banner %}
+<div class="pagepic themepic"> 
+<img src="{{media_url('/images/content/themes/page_'+res.meta.banner)}}">
 </div>
   {% endif %}
 
-  <h2><a href="{{res.full_url}}">{{res.meta.title}}</a></h2>
+  <h3>{{res.meta.title}}</h3>
 <p class="description">
   {{res.meta.description}}
 </p>
-<p>
-{% refer to res.relative_path as theme %}
-{{theme.themetext}}
-</p>
+</a>
 </div>
 {% endif %}
 {% endfor %}
+</div>
 
 {% endblock %}
 

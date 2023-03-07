@@ -17,12 +17,16 @@
         {% for item in menu -%}
         {% set active = False -%}
         {% if item.type == 'page' -%}
-            {% set active = (resource.url ==
+
+{% set active = (resource.url ==
                 site.content.resource_from_relative_path(item.url).url) -%}
         {% else -%}
             {% set active = (node ==
                 site.content.node_from_relative_path(item.url)) -%}
         {%- endif %}
+	{% if resource.meta.menu == item.url %}
+	{% set active = 1==1 %}
+	{% endif %}
         {% set classes = ['button', 'white'] -%}
         {% set liclass = [] -%}
         {% do classes.append('active') if active -%}

@@ -1,2 +1,3 @@
 extends: theme.j2
 default_block: theme
+menu: themes

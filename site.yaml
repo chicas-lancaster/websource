@@ -46,7 +46,7 @@ context:
             -
                 name: Research Themes
                 description: Our Research Theme Details
-                css_class: research
+                css_class: themes
                 type: node
                 url: themes
             -
