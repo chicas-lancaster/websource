@@ -312,6 +312,6 @@ div.profilename {
 
 div.peoplelist {
     display: grid;
-    gap: 1rem;
+    gap: 0.25rem;
     grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
 }
