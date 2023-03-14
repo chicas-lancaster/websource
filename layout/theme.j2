@@ -31,15 +31,17 @@
 <div class="peoplelist"> 
 {% set peoplenode = resource.node.root.node_from_relative_path("people/") %}
 {% from "macros.j2" import personbox with context %}
+
 {% for person in resource.meta.people %}
 {% set p = peoplenode.get_resource(person + ".html") %}
 {{personbox(p)}}
 {% endfor %}
 </div>
-{% endif %}
+
 </div>
 </div>
 </div><!--collapsible-->
+{% endif %}
 
 
 {% if resource.meta.projects %}
