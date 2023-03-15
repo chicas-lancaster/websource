@@ -30,11 +30,15 @@
  
 <div class="peoplelist"> 
 {% set peoplenode = resource.node.root.node_from_relative_path("people/") %}
-{% from "macros.j2" import personbox with context %}
 
-{% for person in resource.meta.people %}
-{% set p = peoplenode.get_resource(person + ".html") %}
-{{personbox(p)}}
+{% from "macros.j2" import personbox with context %}
+{% from "macros.j2" import getpeople with context %}
+
+{% set ns = namespace() %}
+{{ getpeople(ns, resource, resource.meta.people) }}
+
+{% for person in ns.people %}
+{{personbox(person)}}
 {% endfor %}
 </div>
 
@@ -53,12 +57,14 @@
 <div class="content-inner">
  
 
- {% from "macros.j2" import projectbox with context %}
- <div id="projects" class="projectgrid">
-{% set projectnode = resource.node.root.node_from_relative_path("projects/") %}
-{% for project in resource.meta.projects  %}
-{% set p = projectnode.get_resource(project + ".html") %}
-{{ projectbox(p) }}
+{% from "macros.j2" import projectbox with context %}
+{% from "macros.j2" import getprojects with context %}
+
+{{ getprojects(ns, resource, resource.meta.projects) }}
+<div id="projects" class="projectgrid">
+
+{% for project in ns.projects  %}
+{{ projectbox(project) }}
 {% endfor %}      
 </div>
 
