@@ -83,8 +83,8 @@
 </div>
 {% endmacro %}
 
-{% macro getpeople(ns, res, peoplelist) %}
-{% set peoplenode = res.node.root.node_from_relative_path("people/") %}
+{% macro getpeople(ns, peoplelist) %}
+{% set peoplenode = site.content.node_from_relative_path("people/") %}
 {% set found = [] %}
 {% for person in peoplelist %}
 {% set p = peoplenode.get_resource(person+".html") %}
@@ -93,9 +93,10 @@
 {% set ns.people = found %}
 {% endmacro %}
 
-{% macro getprojects(ns, res, projectlist) %}
+{% macro getprojects(ns, projectlist) %}
 {% set found = [] %}
-{% set projectnode = res.node.root.node_from_relative_path("projects/") %}
+{% set projectnode = site.content.node_from_relative_path("projects/") %}
+
 {% for project in projectlist %}
 {% set p = projectnode.get_resource(project + ".html") %}
 {% do found.append(p) if p %}
