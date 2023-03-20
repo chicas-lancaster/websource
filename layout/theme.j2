@@ -76,77 +76,7 @@
 
 
 {% block extrahead %}
-
-<style>
-
-.projectgrid  {
-  display: grid;
-  gap: 0.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-
-input[type='checkbox'] {
-  display: none;
-}
-.lbl-toggle {
-  display: block;
-
-  font-weight: bold;
-  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  text-align: left;
-
-  padding: 1rem;
-  color: #b5121b;	
-
-  cursor: pointer;
-
-  border-radius: 7px;
-  transition: all 0.25s ease-out;
-}
-
-.lbl-toggle:hover {
-  color: #7C5A0B;
-}
-.lbl-toggle::before {
-  content: ' ';
-  display: inline-block;
-
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid currentColor;
-
-  vertical-align: middle;
-  margin-right: .7rem;
-  transform: translateY(-2px);
-
-  transition: transform .2s ease-out;
-}
-.collapsible-content .content-inner {
-
-}
-.collapsible-content {
-  max-height: 0px;
-  overflow: hidden;
-
-  transition: max-height .25s ease-in-out;
-}
-.toggle:checked + .lbl-toggle + .collapsible-content {
-  max-height: 100vh;
-}
-.toggle:checked + .lbl-toggle::before {
-  transform: rotate(90deg) translateX(-3px);
-}
-
-.toggle:checked + .lbl-toggle {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-</style>
-<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to loca
-l if necessary -->
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
 <script src="/media/js/libs/slimbox2.js"></script>
