@@ -1,0 +1,63 @@
+{% extends "flexiwide.j2" %}
+
+{% block sidebar %}
+<h4>Sidebar</h4>
+ <p>
+This is the default side bar
+</p>
+{% endblock %}
+
+{% block footscripts %}
+
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.2.min.js">\x3C/script>')</script>
+
+<script src="/media/js/libs/isotope.pkgd.min.js"></script>
+<script src="/media/js/libs/imagesloaded.pkgd.min.js"></script>
+<script>
+$(document).ready(function(){
+var $container = $("#projects").imagesLoaded( function(){
+// init
+$container.isotope({
+  // options
+  itemSelector: '.projectbox',
+  layoutMode: 'masonry',
+  masonry: { gutter: 10 }
+});
+});
+
+var $tbs = $("#tagboxes");
+$tbs.isotope({
+	itemSelector: '.tagbox'
+});
+
+$('input.tagfilter').on('change', function(){
+    var data = $(this).data('tag').slice(4);
+    location.hash=data;
+    if( data == "" ){
+        $('#projects').isotope({filter: ""});
+    }else{
+        $('#projects').isotope({filter: ".tag-"+data});
+    }
+ });
+
+window.onpopstate = function(event){
+ var iid;
+ if(location.hash == ""){
+   $('#projects').isotope({filter: ""});
+   iid = "all";
+ }else{
+   $('#projects').isotope({filter: ".tag-"+location.hash.slice(1)});
+   iid = "tag-"+location.hash.slice(1);
+ };
+ $('input#'+iid).prop("checked",true);
+
+};
+
+
+});
+</script>
+{% endblock %}
+

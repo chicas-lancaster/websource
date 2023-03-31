@@ -43,6 +43,24 @@
 
 </dl>
 
+{% set themenode = resource.node.root.node_from_relative_path("themes/") %}
+{% set themes = [] %}
+{% for theme in themenode.walk_resources() %}
+{% for person in theme.meta.people %}
+{% if person+".html" == resource.name %}
+{% do themes.append(theme) %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% if themes %}
+<h2>Research Themes</h2>
+<ul>
+{% for theme in themes %}
+<li><a title="{{theme.description}}" href="{{theme.url}}">{{theme.meta.title}}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
 
 {% set projectnode = resource.node.root.node_from_relative_path("projects/") %}
 {% set current = [] %}
