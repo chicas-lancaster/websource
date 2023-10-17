@@ -2,19 +2,10 @@
 
 {% block sidebar %}
 <div class="newsbox">
-<h4>Latest News</h4>
-{% set latest = resource.node.walk_resources()|selectattr("is_processable")|selectattr("meta.release")|sort(reverse=True, attribute="meta.release")|first() %}
-{% if latest.meta.image %}
-<img class="newspic" src="{{media_url('/images/news/icon_'+latest.meta.image.name)}}">
-{% endif %}
-<!-- h6 class="newsdate">{{latest.meta.releasedate.strftime("%e %B, %Y")}}</h6-->
-<h5><a href="{{latest.url}}">{{latest.meta.title}}</a></h5>
-<p>
-{{latest.meta.description}}
-</p>
-</div>
+
 <hr />
-<div id="nextevent"></div>
+
+</div>
 {% endblock %}
 
 {% block extrahead %}

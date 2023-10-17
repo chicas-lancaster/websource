@@ -17,12 +17,16 @@
         {% for item in menu -%}
         {% set active = False -%}
         {% if item.type == 'page' -%}
-            {% set active = (resource.url ==
+
+{% set active = (resource.url ==
                 site.content.resource_from_relative_path(item.url).url) -%}
         {% else -%}
             {% set active = (node ==
                 site.content.node_from_relative_path(item.url)) -%}
         {%- endif %}
+	{% if resource.meta.menu == item.url %}
+	{% set active = 1==1 %}
+	{% endif %}
         {% set classes = ['button', 'white'] -%}
         {% set liclass = [] -%}
         {% do classes.append('active') if active -%}
@@ -40,3 +44,62 @@
 </nav>
 {%- endif %}
 {%- endmacro %}
+
+
+{% macro projectbox(res) %}
+<div class="projectbox {{tags|join(' ')}}">
+<a href="{{res.full_url}}">
+<div class="project {{tags|join(' ')}}">
+
+<div class="title">{{res.meta.title}}</div>
+{% if res.meta.image %}
+<img  class="" src="{{media_url('/images/content/icon_'+res.meta.image.name)}}">
+{% endif %}
+<div class="description">
+<p>{{res.meta.description}}</p>
+</div>
+<div style="clear: both;"></div>
+</div>
+</a>
+</div>
+{% endmacro %}
+
+{% macro personbox(resource) %}
+<div class="personbox">
+<a href="{{resource.full_url}}">
+{% set imgd = resource.node.root.node_from_relative_path("media/images/people/") %}
+{% set r = imgd.contains_resource(resource.slug+".jpg") %}
+<div class="profilepic">
+{% if r %}
+<img src="{{media_url('/images/people/profile_'~resource.slug~'.jpg')}}">
+{% else %}
+<img src="{{media_url('/images/people/profile_nobody.jpg')}}">
+{% endif %}
+</div>
+<div class="profilename">
+{{resource.meta.title}}
+</div>
+</a>
+</div>
+{% endmacro %}
+
+{% macro getpeople(ns, peoplelist) %}
+{% set peoplenode = site.content.node_from_relative_path("people/") %}
+{% set found = [] %}
+{% for person in peoplelist %}
+{% set p = peoplenode.get_resource(person+".html") %}
+{% do found.append(p) if p %}
+{% endfor %}
+{% set ns.people = found %}
+{% endmacro %}
+
+{% macro getprojects(ns, projectlist) %}
+{% set found = [] %}
+{% set projectnode = site.content.node_from_relative_path("projects/") %}
+
+{% for project in projectlist %}
+{% set p = projectnode.get_resource(project + ".html") %}
+{% do found.append(p) if p %}
+{% endfor %}
+{% set ns.projects = found %}
+{% endmacro %}

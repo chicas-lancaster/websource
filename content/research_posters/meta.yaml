@@ -1,0 +1,5 @@
+ thumbnails:
+  - height: 150
+    prefix: thumb_
+    include:
+    - '*.webp'

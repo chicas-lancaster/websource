@@ -46,9 +46,9 @@ context:
             -
                 name: Research Themes
                 description: Our Research Theme Details
-                css_class: research
-                type: page
-                url: themes.html
+                css_class: themes
+                type: node
+                url: themes
             -
                 name: News
                 description: News Items
@@ -61,6 +61,14 @@ context:
                 css_class: events
                 type: node
                 url: events
+        whoccmenu:
+            -
+                name: CHICAS Home
+                description: Chicas Home Page
+                css_class: home
+                type: page
+                url: index.html
+
 meta:
     nodemeta: meta.yaml
     created: !!timestamp 2010-01-01 00:00:00
@@ -96,6 +104,9 @@ grouper:
         groups:
            - name: staff
              description: "Academic Staff"
+             showGroupOnMain: True
+           - name: support
+             description: "Professional Services"
              showGroupOnMain: True
            - name: pdra
              description: "Research Staff"

@@ -3,6 +3,13 @@ extends: flexigridmap.j2
 title: Home page
 description: Home page for CHICAS
 ---
+{% block sidebar %}
+<h2>About CHICAS</h2>
+<p>
+The Centre for Health Informatics, Computing, and Statistics (CHICAS) is a group of staff, research associates, and postgraduate students in the Lancaster Medical School, part of the Faculty of Health and Medicine at Lancaster University. 
+</p>
+{% endblock %}
+
 {% block belowcontent %}
 <section class="box info" id="threebox">
   <div class="ym-grid linearize-level-1">
@@ -11,11 +18,11 @@ description: Home page for CHICAS
 
 	<article class="ym-g50 ym-gl">
 	  <div class="ym-gbox-left">
-	    <h4><a class="plainhead" href="/study">Study with CHICAS</a></h4>
+           <h4><a class="plainhead" href="/study">MSc and PhD Studies</a></h4>
 <!-- PhD opps go here -->
-	    <p>CHICAS supervises PhD students and operates the MRes Global Health programme. See
+           <p>CHICAS supervises PhD students and runs the MSc in Health Data Science. See
 our <a href="/study">Study with CHICAS</a> pages for more details.
-</p>
+	   </p>
 	  </div>
 	</article>
 	
@@ -39,15 +46,7 @@ information</p-->
 
     <article class="ym-g33 ym-gr">
       <div class="ym-gbox-right secondary">
-	<h4><a href="/map.html" class="plainhead">Locations</a></h4>
-	    <a href="/map.html">
-	      <div id="maplink">
-		<img id="locationthumb" src="/media/images/graphics/location.png"/>
-		<div id="locationcaption">
-		  The <a href="/map.html">project map</a> shows our global connections.
-		</div>
-	      </div>
-	    </a>
+	<a href="whocc"><img width="100%" src="/media/images/logo/whocc.svg" /></a>
       </div>
     </article>
   </div>
@@ -57,19 +56,7 @@ information</p-->
 {% block main %}
 <ul class="bxslider">
 <li>
-<img src="/media/images/slider/snowmap2.jpg" title="We are a research group of <a href='/people' class='carousel'>statisticians and epidemiologists</a> in the Lancaster Medical School" />
-</li>
-<li>
-<img src="/media/images/slider/world2.jpg" title="We develop new methodology for <a class='carousel' href='/projects'>substantive research problems</a> in the population health sciences" />
-</li>
-<li>
-<img src="/media/images/slider/girlgoat.jpg" title="Our <a class='carousel' href='/study'>MRes Global Health</a> degree scheme develops scientists to solve international health problems" />
-</li>
-<li>
-<img src="/media/images/slider/workshop2.jpg" title="We train researchers at the interface between statistics and population health sciences" />
-</li>
-<li>
-<img src="/media/images/slider/arrows2.jpg" title="We <a href='/partners.html' class='carousel'>collaborate with</a> researchers in the biomedical and health sciences." />
+<img src="/media/images/slider/group_photo.jpg" title="We are a research group of <a href='/people' class='carousel'>statisticians and epidemiologists</a> in the Lancaster Medical School" />
 </li>
 </ul>
 {% endblock %}

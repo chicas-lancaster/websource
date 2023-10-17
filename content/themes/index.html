@@ -1,0 +1,51 @@
+---
+extends: flexiwide.j2
+title: Research Themes
+description: The research work we do.
+---
+{% block main %}
+
+<h2>CHICAS Research Themes</h2>
+<p><!-- EG, not ChatGPT -->
+
+We are a research group with internationally leading expertise in
+epidemiology and biostatistics. We work on a range of research
+projects that focus on infectious disease modeling, geospatial
+statistics and population health data. Through our research, we strive
+to identify patterns, disparities, and trends in health, and inform
+the development of targeted interventions to improve health outcomes
+for all.
+</p>
+
+<div class="themes" style="display: flex">
+
+{% for res in resource.node.walk_resources() %}
+{% if res.meta.extends == "theme.j2" and res.is_processable %}
+<div class="themebox">
+  <a href="{{res.full_url}}">
+  {% if res.meta.banner %}
+<div class="pagepic themepic"> 
+<img src="{{media_url('/images/content/themes/page_'+res.meta.banner)}}">
+</div>
+  {% endif %}
+
+  <h3>{{res.meta.title}}</h3>
+<p class="description">
+  {{res.meta.description}}
+</p>
+</a>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+{% block extrahead %}
+ <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+<script src="/media/js/libs/slimbox2.js"></script>
+<link rel="stylesheet" href="/media/css/slimbox/slimbox2.css" type="text/css" media="screen" />
+{% endblock %}

@@ -1,0 +1,47 @@
+---
+extends: flexigridisotope.j2
+title: Research Posters
+description: Chicas Research Posters
+---
+
+{% block main %}
+
+{% set all = resource.node.resources | selectattr("meta.authors") %}
+
+<h2>Research Posters</h2>
+
+<div id="projects">
+  {% for posterm in all|sort(attribute="meta.title") %}
+  {% set poster = posterm.meta %}
+
+
+
+<div class="projectbox">
+<a href="/research_posters/{{poster.file}}.html">
+<div class="project">
+
+<div class="title">{{poster.authors}}</div>
+<img  class="" width="40%" src="thumb_{{poster.file}}.webp">
+<div class="description">
+<p>{{poster.title}}</p>
+</div>
+<div style="clear: both;"></div>
+</div>
+</a>
+</div>
+
+{% endfor %}
+</div>
+
+
+{% endblock %}
+    
+{% block sidebar %}
+<p>
+This collection of research posters showcases our work as displayed
+at conferences and meetings.
+</p>
+<p>
+Click poster or description for zoomable version and link to PDF or PPT source.
+</p>
+{% endblock %}

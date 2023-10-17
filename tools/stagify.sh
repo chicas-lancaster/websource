@@ -23,7 +23,7 @@ if [ ! -f ${FOLDER}/index.html ]; then
     exit 3
 fi
 
-find $FOLDER -name '*.html' -exec sed -i s'/<\/body>/<div class="staging">STAGING<\/div><\/body>/' {} \;
+find $FOLDER -name '*.html' -exec sed -i s'/<\/body>/<div class="staging">DRAFT SITE<\/div><\/body>/' {} \;
 
 
 cat >> $FOLDER/media/css/custom.css <<EOF
@@ -34,8 +34,8 @@ left: 0px;
 position: fixed;
 opacity: 0.5;
 pointer-events: none;
-transform: translate(100px, 50px) rotate(-17deg);
-font-size: 100px;
+transform: translate(200px, 150px) rotate(-17deg);
+font-size: 200px;
 }
 
 EOF

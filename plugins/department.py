@@ -2,7 +2,7 @@ from hyde.plugin import Plugin
 from hyde.ext.plugins.meta import Metadata, MetaPlugin
 from jinja2 import environmentfilter, Environment
 
-from datetime import datetime
+from datetime import datetime, date
 
 import sys
 import urllib
@@ -75,18 +75,28 @@ def googlecalendar(env, value, verbose=False):
     
 @environmentfilter
 def surnamesort(env, value, verbose=False):
-    """ sort on last name. Possibly sorting on second name is better 
-    when people present with three names but I'm not sure..."""
+    """ sort on last name unless there's a 
+    "namesort" attribute then sort on that
+    """
+
     def getsur(x):
+        if hasattr(x.meta,"namesort"):
+            return(x.meta.namesort)
         return x.meta.title.split()[-1]
     return sorted(value, key=getsur)
+
+@environmentfilter
+def todayYMD(env, value, verbose=False):
+    return date.today()
+
 
 filters={
     'todateformat': todateformat,
     'calurl': datacalendar,
     'googleurl': googlecalendar,
     'vevent': tovevent,
-    'surnamesort': surnamesort
+    'surnamesort': surnamesort,
+    'todayYMD': todayYMD
 }
 
 class DepartmentPlugin(MetaPlugin):
