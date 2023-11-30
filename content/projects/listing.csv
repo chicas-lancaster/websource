@@ -1,0 +1,26 @@
+---
+extends: empty.j2
+---
+{% block main %}
+project,title
+{% for res in resource.node.walk_resources_sorted_by_titling() %}
+{% set expired = false %}
+{% if res.meta.expiry %}
+{% if ""|todayYMD() >= res.meta.expiry %}
+{% set expired = true %}
+{% endif %}
+{% endif %}
+{% if res.meta.finished %}
+{% set expired = true %}
+{% endif %}
+{% if res.meta.extends == "project.j2" and (res.is_processable and not expired) %}
+{% set tags=[] %}
+{% if res.meta.tags %}
+{% for tag in res.meta.tags %}
+{% do tags.append("tag-"+tag) %}
+{% endfor %}
+{% endif %}
+"{{res.relative_path}}","{{res.meta.title}}"
+{% endif %}
+{% endfor %}
+{% endblock %}

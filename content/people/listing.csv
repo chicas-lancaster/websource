@@ -1,0 +1,13 @@
+---
+extends: empty.j2
+---
+{% block main %}
+{% for grp, res_walker in site.content.walk_status_groups() %}
+{% set ppl = res_walker|surnamesort %}
+{% if grp.showGroupOnMain and ppl|length > 0 %}
+{% for res in ppl %}
+"{{res.relative_path}}","{{ res.meta.title }}"
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endblock %}
