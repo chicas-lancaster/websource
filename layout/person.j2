@@ -1,6 +1,14 @@
 {% extends "flexigrid.j2" %}
 
 {% block main %}
+{% if resource.meta.status == "former" %}
+<div class="formerperson">
+<h2>Former CHICAS member</h2>
+<p>This page refers to someone who is no longer in the CHICAS
+group or possibly even at Lancaster University. Any information here may be
+out of date.</p>
+</div>
+{% endif %}
 <h2>{{ resource.meta.title }}</h2>
 {% if resource.meta.affiliation %}
 <h3>
