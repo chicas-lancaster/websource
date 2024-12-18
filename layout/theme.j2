@@ -37,7 +37,9 @@
 {{ getpeople(ns, resource.meta.people) }}
 
 {% for person in ns.people %}
+{% if person.meta.status != "former" %}
 {{personbox(person)}}
+{% endif %}
 {% endfor %}
 </div>
 
