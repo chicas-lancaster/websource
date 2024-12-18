@@ -2,6 +2,15 @@
 
 {% block main %}
 <!-- project.j2 -->
+{% if resource.meta.finished  %}
+<div class="formerproject">
+<h2>Finished Project</h2>
+<p>
+This page refers to a project that is no longer active and so information here
+may be out of date or otherwise incorrect.
+</p>
+</div>
+{% endif %}
 <h2>{{ resource.meta.title }}</h2>
 {% if resource.meta.image %}
 <div class="pagepic">
