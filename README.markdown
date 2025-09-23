@@ -25,6 +25,8 @@ The fields of the YAML header control aspects of the output web page such as the
 a person's ORCID number, the people involved in a project, links to go in the sidebar
 and so on. Most fields are optional.
 
+There's a template for people pages in `./tools/people.tmp`.
+
 Following the YAML is the HTML source code for the page body. See current 
 pages for examples.
 
@@ -34,11 +36,22 @@ and match the filename of the image to the person page filename. Images for proj
 `./content/media/images/content` and are named by the `image:` field in the YAML header of the project
 page.
 
+## Research Themes
+
+Add people to the research themes by adding their name to the relevant list of names
+in the template pages in the research themes folder.
+
 ## Building The Site
 
 If you want to try to build a local copy of the web pages to see what your changes look like before
 committing you'll need to install `hyde`, the website builder software used. This currently requires
 a few other dependencies and there are some issues running it on Python 3, so you may have to install
-Python 2, and that might be tricky on Windows. At some point I may try setting up GitHub Actions to
-build the site which means you would be able to see a built site from your forked repository 
-online before sending a pull request. 
+Python 2, and that might be tricky on Windows.
+
+From the top level folder `make force` will build the site.
+
+Use `make publish` to build and then push the built site to the github
+repository that is served as the CHICAS web page. In the past this build-and-publish
+was done via github integration with CI whenever the built site was committed to 
+the source repository but that was changed. 
+
