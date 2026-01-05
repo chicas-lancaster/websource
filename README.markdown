@@ -55,3 +55,29 @@ repository that is served as the CHICAS web page. In the past this build-and-pub
 was done via github integration with CI whenever the built site was committed to 
 the source repository but that was changed. 
 
+# Site Serving
+
+The `chicas.lancaster-university.uk` domain is controlled by ISS and is an alias for
+`chicas-lancaster.github.io` which is the github pages domain for the repository. The
+`CNAME` file tells `github` pages what the source domain really is in a multi-site
+hosted environment (several domain names can point to the same server).
+
+## Decomissioning
+
+Stage 1: All `chicas.lancaster-university.uk` web pages will have a short pause and then
+redirect to the Chicas pages on the university content management system. Current content
+remains visible but a banner message will indicate the page may be out of date for systems
+that might not follow the redirect. No URLs to existing Chicas pages will break.
+
+Stage 2: Get ISS to remove the `chicas.lancaster-university.uk` name from the system. At
+this point (or as soon as any cached name lookups expire) old Chicas URLs will result in 
+browser errors. The web pages may still be visible at `chicas-lancaster.github.io`, but
+that might only be if the `CNAME` file is deleted.
+
+Stage 3: Remove the `https://github.com/chicas-lancaster/chicas-lancaster.github.io` 
+repository. At this point old Chicas pages will not be served, but may still be accessed
+via sources such as `archive.org`, eg at
+`https://web.archive.org/web/20250326231339/https://chicas.lancaster-university.uk/people/rowlings.html`
+
+
+
