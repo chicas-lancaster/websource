@@ -423,3 +423,13 @@ div .formerproject {
     border-bottom-right-radius: 1em;
     padding: 0.5em;
     }
+
+div .redirect-message{
+    border: 5px solid #B5121B;
+    margin: 1em 0;
+    border-radius: 1em;
+    font-size: 150%;
+    background-color: #fbdfdf;
+    text-align: center;
+    color:black;
+}

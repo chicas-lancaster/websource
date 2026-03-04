@@ -65,11 +65,20 @@
 {% endblock %}
 <main>
   <div class="ym-wrapper">
-    <div class="ym-wbox">
+    <div class="ym-wbox redirect-message">
       <p>All CHICAS web page content is now on the
 	<a href="https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php">faculty pages</a>.</p>
       <p>You will be redirected there in 3 seconds.</p>
     </div>
+
+      {% block abovecontent %}
+      {% endblock %}
+      {% block sections %}
+
+{% endblock %}
+{% block belowcontent %}
+{% endblock %}
+    
   </div>
 </main>
 <footer>
