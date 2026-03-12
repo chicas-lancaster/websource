@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% if resource.meta.pure and resource.meta.status != "former" %}
+    {% if resource.meta.redirect %}
+    <meta http-equiv="refresh" content="3;{{resource.meta.redirect}}/" />
+    {% elif  resource.meta.pure and resource.meta.status != "former" %}
     <meta http-equiv="refresh" content="3;https://research.lancaster-university.uk/en/persons/{{resource.meta.pure}}/" />
-    {% else %}
-    {% if resource.meta.orcid and resource.meta.status != "former" %}
+    {% elif resource.meta.orcid and resource.meta.status != "former" %}
     <meta http-equiv="refresh" content="3;https://orcid.org/{{resource.meta.orcid}}/" />
     {% else %}
     <meta http-equiv="refresh" content="3;https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php" />
-    {% endif %}
     {% endif %}
 	<meta charset="utf-8"/>
 	<title>Lancaster Medical School - CHICAS - {% block title %}{{resource.meta.title}}{% endblock %}</title>
@@ -75,13 +75,13 @@
   <div class="ym-wrapper">
     <div class="ym-wbox redirect-message">
 
-      {% if resource.meta.pure  and resource.meta.status != "former" %}
+      {% if resource.meta.redirect %}
+      <p>You will be redirected to {{resource.meta.redirect}}</p>
+      {% elif resource.meta.pure  and resource.meta.status != "former" %}
       <p>CHICAS web page content has now been moved,
 	and this person's information is now on the  <a href="https://research.lancaster-university.uk/en/persons/{{resource.meta.pure}}/">research portal page</a>.
 	</p>
-      {% else %}
-
-      {% if resource.meta.orcid  and resource.meta.status != "former" %}
+      {% elif resource.meta.orcid  and resource.meta.status != "former" %}
             <p>CHICAS web page content has now been moved,
 	you may find their <a href="http://orcid.org/{{resource.meta.orcid}}">ORCID page</a> useful.
 	</p>
@@ -89,7 +89,6 @@
       
       <p>All CHICAS web page content is now on the
 	<a href="https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php">faculty pages</a></p>
-      {% endif %}
       {% endif %}
       
       <p>You will be redirected there in 3 seconds.</p>
