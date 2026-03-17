@@ -2,14 +2,25 @@
 <html lang="en">
   <head>
     {% if resource.meta.redirect %}
-    <meta http-equiv="refresh" content="3;{{resource.meta.redirect}}/" />
+    {% set redirect | trim %}
+    {{resource.meta.redirect}}
+    {% endset %}
     {% elif  resource.meta.pure and resource.meta.status != "former" %}
-    <meta http-equiv="refresh" content="3;https://research.lancaster-university.uk/en/persons/{{resource.meta.pure}}/" />
+    {% set redirect | trim %}
+    https://research.lancaster-university.uk/en/persons/{{resource.meta.pure}}/
+    {% endset %}
     {% elif resource.meta.orcid and resource.meta.status != "former" %}
-    <meta http-equiv="refresh" content="3;https://orcid.org/{{resource.meta.orcid}}/" />
+    {% set redirect | trim %}
+    https://orcid.org/{{resource.meta.orcid}}
+    {% endset %} 
     {% else %}
-    <meta http-equiv="refresh" content="3;https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php" />
+    {% set redirect | trim %}
+    https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php
+    {% endset %}
     {% endif %}
+
+    <meta http-equiv="xrefresh" content="3;{{redirect}}/" />
+
 	<meta charset="utf-8"/>
 	<title>Lancaster Medical School - CHICAS - {% block title %}{{resource.meta.title}}{% endblock %}</title>
 
@@ -83,12 +94,12 @@
 	</p>
       {% elif resource.meta.orcid  and resource.meta.status != "former" %}
             <p>CHICAS web page content has now been moved,
-	you may find their <a href="http://orcid.org/{{resource.meta.orcid}}">ORCID page</a> useful.
+	you may find their <a href="https://orcid.org/{{resource.meta.orcid}}">ORCID page</a> useful.
 	</p>
       {% else %}
       
-      <p>All CHICAS web page content is now on the
-	<a href="https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php">faculty pages</a></p>
+      <p>You may have followed an outdated link. All CHICAS web page content is now on the
+	<a href="https://www.lancaster.ac.uk/lms/lms-research/centre-for-health-informatics-computing-and-statistics-chicas/index.php">Lancaster Medical School pages</a></p>
       {% endif %}
       
       <p>You will be redirected there in 3 seconds.</p>

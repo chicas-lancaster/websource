@@ -429,7 +429,22 @@ div .redirect-message{
     margin: 1em 0;
     border-radius: 1em;
     font-size: 150%;
-    background-color: #fbdfdf;
+    background-color: #ffffff;
     text-align: center;
+    padding-bottom: 0;
     color:black;
+}
+
+header {
+    filter: blur(3px) saturate(0);
+}
+
+nav {
+    filter: blur(3px) saturate(0);
+
+}
+
+section {
+    filter: blur(3px) saturate(0);
+
 }
